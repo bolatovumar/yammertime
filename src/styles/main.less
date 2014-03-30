@@ -43,6 +43,19 @@ body {
     &::-webkit-scrollbar {
         background-color: @white;
     }
+
+    &.bright {
+        header {
+            li {
+                a,
+                a:active,
+                a:visited,
+                a:hover {
+                    color: darken(@white, 30%);
+                }
+            }
+        }
+    }
 }
 
 a {

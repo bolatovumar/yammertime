@@ -66,7 +66,15 @@ Yt.Settings = Yt.Settings || {};
         var color = module.get(settingKeys.bgColor);
 
         if (color) {
+            var brightness = util.determineBrightness(color);
+
             elements.body.css('background', color);
+
+            if (brightness === 'bright') {
+                elements.body.addClass('bright');
+            } else {
+                elements.body.removeClass('bright');
+            }
         }
     }
 
