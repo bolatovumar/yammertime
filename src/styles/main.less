@@ -75,6 +75,23 @@ a {
     &.xlarge {
         font-size: @text-xlarge;
     }
+
+    counter-reset: my-badass-counter;
+    .regular {
+        position: relative;
+        &:before {
+            content: counter(my-badass-counter);
+            counter-increment: my-badass-counter;
+            position: absolute;
+            left: -30px;
+            top: 0;
+            font-family: Arial, sans-serif;
+            font-weight: bold;
+            font-size:  50px;
+            line-height: 1;
+            color: red;
+        }
+    }
 }
 
 

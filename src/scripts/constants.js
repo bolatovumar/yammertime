@@ -54,6 +54,7 @@ Yt.Constants = Yt.Constants || {};
 		postId: 'postId',
 		postRotation: 'postRotation',
 		showSticky: 'showSticky',
+		showTop: 'showTop',
 		sticky: 'sticky',
 		stickyDate: 'stickyDate',
 		textSize: 'textSize',

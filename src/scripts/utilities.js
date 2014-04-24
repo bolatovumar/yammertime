@@ -70,6 +70,7 @@ Yt.Util = Yt.Util || {};
             overlay: $('.overlay'),
             overlayExpanded: $('.expanded.modal'),
             postExpanded: $('.post-expanded'),
+            postSwitcher: $('.switcher a'),
             repliesExpanded: $('.replies-expanded'),
             settings: $('#settings'),
             settingsDialog: $('.settings'),
@@ -114,6 +115,20 @@ Yt.Util = Yt.Util || {};
             console.log('An error has occured:', msg);
         }
     };
+
+    /**
+     * Sort messages by like count
+     */
+    module.sortByLikes = function(a,b) {
+        if (a.liked_by.count > b.liked_by.count) {
+            return -1;
+        }
+
+        if (a.liked_by.count < b.liked_by.count) {
+            return 1;
+        }
+        return 0;
+    }
 
 
     module.addTrim();

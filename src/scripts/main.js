@@ -391,6 +391,12 @@
             template = templates.message;
         }
 
+        console.log(messages);
+
+        if (settings.get(settingKeys.showTop)) {
+            messages.sort(util.sortByLikes);
+        }
+
         html = template(messages);
 
         // Turn the response with replies in it into an array
@@ -398,6 +404,8 @@
 
         // Reverse the order of messages
         html = html.reverse();
+
+        console.log(html);
 
         // Appending replies to a post
         if (postId.length > 0) {

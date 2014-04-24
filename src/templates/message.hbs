@@ -1,5 +1,5 @@
 {{#each this}}
-    <div class="{{#unless replied_to_id}}yam{{/unless}} {{#if replied_to_id}}yam reply{{/if}}" id="{{id}}">
+    <div class="regular{{#unless replied_to_id}} yam{{/unless}}{{#if replied_to_id}} yam reply{{/if}}" id="{{id}}">
         <div class="userimg"><img src="{{this.mugshot_url}}" height="96" width="96"/></div>
 
         <div class="content">
