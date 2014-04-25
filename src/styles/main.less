@@ -37,6 +37,7 @@
 
 body {
     background-color: @slateGrey;
+    background: radial-gradient(ellipse at center, rgba(181,189,200,1) 0%,rgba(130,140,149,1) 36%,rgba(40,52,59,1) 100%);
     color: @darkGrey;
     font-family: Helvetica, Arial, sans-serif;
 
@@ -46,14 +47,14 @@ body {
 }
 
 a {
-    color: @blue;
+    color: darken(@white, 10%);
 
     &:hover {
-        color: darken(@blue, 20%);
+        color: darken(@white, 20%);
     }
 
     &:active {
-        color: darken(@blue, 40%);
+        color: darken(@white, 40%);
     }
 }
 
@@ -76,20 +77,53 @@ a {
         font-size: @text-xlarge;
     }
 
-    counter-reset: my-badass-counter;
     .regular {
-        position: relative;
-        &:before {
-            content: counter(my-badass-counter);
-            counter-increment: my-badass-counter;
-            position: absolute;
-            left: -30px;
-            top: 0;
-            font-family: Arial, sans-serif;
-            font-weight: bold;
-            font-size:  50px;
-            line-height: 1;
-            color: red;
+        .sender {
+            margin-top: 18px;
+
+            .userimg {
+                height: 35px;
+                float: left;
+                margin-right: 8px;
+
+                img {
+                    border-radius: 35px;
+                    border: 2px solid @white;
+                    border-color: fade(@white, 40%);
+                }
+            }
+
+            a {
+                line-height: 35px;
+            }
+        }
+
+        .social {
+            .likedby {
+                float: left;
+                margin-right: 25px;
+                margin-top: 12px;
+                padding-top: 0;
+            }
+        }
+    }
+
+    counter-reset: my-badass-counter;
+    &.top {
+        &>.regular {
+            position: relative;
+            &:before {
+                content: counter(my-badass-counter) ".";
+                counter-increment: my-badass-counter;
+                position: absolute;
+                left: 30px;
+                top: 25px;
+                font-family: Arial, sans-serif;
+                font-weight: bold;
+                font-size:  50px;
+                line-height: 1;
+                color: darken(@white, 20%);
+            }
         }
     }
 }
@@ -97,7 +131,18 @@ a {
 
 // Header
 .header {
+    height: 70px;
     margin-bottom: 20px;
+
+    background: #9d152d;
+    background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzlkMTUyZCIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjElIiBzdG9wLWNvbG9yPSIjOWQxNTJkIiBzdG9wLW9wYWNpdHk9IjEiLz4KICAgIDxzdG9wIG9mZnNldD0iMSUiIHN0b3AtY29sb3I9IiM4YjEyMjUiIHN0b3Atb3BhY2l0eT0iMSIvPgogICAgPHN0b3Agb2Zmc2V0PSIyJSIgc3RvcC1jb2xvcj0iIzg4MTEyNSIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjMlIiBzdG9wLWNvbG9yPSIjOGIxMDI1IiBzdG9wLW9wYWNpdHk9IjEiLz4KICAgIDxzdG9wIG9mZnNldD0iMyUiIHN0b3AtY29sb3I9IiM4NzEyMjUiIHN0b3Atb3BhY2l0eT0iMSIvPgogICAgPHN0b3Agb2Zmc2V0PSI3JSIgc3RvcC1jb2xvcj0iIzg5MTAyMyIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjglIiBzdG9wLWNvbG9yPSIjYWMzYTUzIiBzdG9wLW9wYWNpdHk9IjEiLz4KICAgIDxzdG9wIG9mZnNldD0iOSUiIHN0b3AtY29sb3I9IiNhYzNhNTMiIHN0b3Atb3BhY2l0eT0iMSIvPgogICAgPHN0b3Agb2Zmc2V0PSI5JSIgc3RvcC1jb2xvcj0iIzljMTQyYSIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjI1JSIgc3RvcC1jb2xvcj0iIzk3MTMyYiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjMwJSIgc3RvcC1jb2xvcj0iIzk3MTIyNyIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjMxJSIgc3RvcC1jb2xvcj0iIzk0MTMyOSIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjM4JSIgc3RvcC1jb2xvcj0iIzkzMTQyOSIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjQxJSIgc3RvcC1jb2xvcj0iIzkxMTIyNSIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjQxJSIgc3RvcC1jb2xvcj0iIzkyMTMyOCIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjQ4JSIgc3RvcC1jb2xvcj0iIzkwMTIyNyIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjQ5JSIgc3RvcC1jb2xvcj0iIzhmMTIyNCIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjU0JSIgc3RvcC1jb2xvcj0iIzhkMTIyNiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjYwJSIgc3RvcC1jb2xvcj0iIzhhMTEyMiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjYxJSIgc3RvcC1jb2xvcj0iIzhiMTIyNSIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9Ijc5JSIgc3RvcC1jb2xvcj0iIzg1MGUyMSIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9Ijk3JSIgc3RvcC1jb2xvcj0iIzgyMGYyMCIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9Ijk3JSIgc3RvcC1jb2xvcj0iIzk1Mzg0YiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9Ijk4JSIgc3RvcC1jb2xvcj0iIzk2Mzg0YSIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9Ijk5JSIgc3RvcC1jb2xvcj0iIzgzMGUyMSIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9Ijk5JSIgc3RvcC1jb2xvcj0iIzgyMGYyMCIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiMxMDE4MWIiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+    background: -moz-linear-gradient(top, #9d152d 0%, #9d152d 1%, #8b1225 1%, #881125 2%, #8b1025 3%, #871225 3%, #891023 7%, #ac3a53 8%, #ac3a53 9%, #9c142a 9%, #97132b 25%, #971227 30%, #941329 31%, #931429 38%, #911225 41%, #921328 41%, #901227 48%, #8f1224 49%, #8d1226 54%, #8a1122 60%, #8b1225 61%, #850e21 79%, #820f20 97%, #95384b 97%, #96384a 98%, #830e21 99%, #820f20 99%, #10181b 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#9d152d), color-stop(1%,#9d152d), color-stop(1%,#8b1225), color-stop(2%,#881125), color-stop(3%,#8b1025), color-stop(3%,#871225), color-stop(7%,#891023), color-stop(8%,#ac3a53), color-stop(9%,#ac3a53), color-stop(9%,#9c142a), color-stop(25%,#97132b), color-stop(30%,#971227), color-stop(31%,#941329), color-stop(38%,#931429), color-stop(41%,#911225), color-stop(41%,#921328), color-stop(48%,#901227), color-stop(49%,#8f1224), color-stop(54%,#8d1226), color-stop(60%,#8a1122), color-stop(61%,#8b1225), color-stop(79%,#850e21), color-stop(97%,#820f20), color-stop(97%,#95384b), color-stop(98%,#96384a), color-stop(99%,#830e21), color-stop(99%,#820f20), color-stop(100%,#10181b));
+    background: -webkit-linear-gradient(top, #9d152d 0%,#9d152d 1%,#8b1225 1%,#881125 2%,#8b1025 3%,#871225 3%,#891023 7%,#ac3a53 8%,#ac3a53 9%,#9c142a 9%,#97132b 25%,#971227 30%,#941329 31%,#931429 38%,#911225 41%,#921328 41%,#901227 48%,#8f1224 49%,#8d1226 54%,#8a1122 60%,#8b1225 61%,#850e21 79%,#820f20 97%,#95384b 97%,#96384a 98%,#830e21 99%,#820f20 99%,#10181b 100%);
+    background: -o-linear-gradient(top, #9d152d 0%,#9d152d 1%,#8b1225 1%,#881125 2%,#8b1025 3%,#871225 3%,#891023 7%,#ac3a53 8%,#ac3a53 9%,#9c142a 9%,#97132b 25%,#971227 30%,#941329 31%,#931429 38%,#911225 41%,#921328 41%,#901227 48%,#8f1224 49%,#8d1226 54%,#8a1122 60%,#8b1225 61%,#850e21 79%,#820f20 97%,#95384b 97%,#96384a 98%,#830e21 99%,#820f20 99%,#10181b 100%);
+    background: -ms-linear-gradient(top, #9d152d 0%,#9d152d 1%,#8b1225 1%,#881125 2%,#8b1025 3%,#871225 3%,#891023 7%,#ac3a53 8%,#ac3a53 9%,#9c142a 9%,#97132b 25%,#971227 30%,#941329 31%,#931429 38%,#911225 41%,#921328 41%,#901227 48%,#8f1224 49%,#8d1226 54%,#8a1122 60%,#8b1225 61%,#850e21 79%,#820f20 97%,#95384b 97%,#96384a 98%,#830e21 99%,#820f20 99%,#10181b 100%);
+    background: linear-gradient(to bottom, #9d152d 0%,#9d152d 1%,#8b1225 1%,#881125 2%,#8b1025 3%,#871225 3%,#891023 7%,#ac3a53 8%,#ac3a53 9%,#9c142a 9%,#97132b 25%,#971227 30%,#941329 31%,#931429 38%,#911225 41%,#921328 41%,#901227 48%,#8f1224 49%,#8d1226 54%,#8a1122 60%,#8b1225 61%,#850e21 79%,#820f20 97%,#95384b 97%,#96384a 98%,#830e21 99%,#820f20 99%,#10181b 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#9d152d', endColorstr='#10181b',GradientType=0 );
 
     .logo {
         padding-top: 20px;
@@ -105,12 +150,13 @@ a {
 
     .header-logo {
         max-width: 100%;
-        max-height: 50px;
+        max-height: 35px;
     }
 
     ul {
         float: right;
-        padding-top: 15px;
+        padding-top: 8px;
+        text-shadow: 1px 1px @black;
 
         li {
             display: inline-block;
@@ -140,6 +186,41 @@ a {
 
     p {
         margin: 0;
+    }
+}
+
+// Tab switcher
+.switcher {
+    ul {
+        list-style-type: none;
+        margin-bottom: 30px;
+        padding: 0;
+
+        li {
+            float: left;
+            margin-left: 6px;
+
+            &:first-child {
+                margin-left: 0;
+            }
+
+            a {
+                border-bottom: 3px solid @white;
+                border-bottom-color: fade(@white, 40%);
+                color: @white;
+                color: fade(@white, 40%);
+                font-size: 20px;
+                padding: 0 25px;
+                padding-bottom: 10px;
+                text-decoration: none;
+                text-transform: uppercase;
+
+                &.active {
+                    border-bottom-color: @white;
+                    color: @white;
+                }
+            }
+        }
     }
 }
 
@@ -176,6 +257,11 @@ a {
 
 .feed {
     font-size: @text-medium;
+
+    &>.yam {
+        border: 1px solid @white;
+        border: 1px solid fade(@white, 20%);
+    }
 }
 
 .hide {
@@ -185,39 +271,24 @@ a {
 .yam,
 .reply {
     background-color: @white;
+    background-color: fade(@black, 10%);
     margin-bottom: 20px;
     padding: 0 10px;
     position: relative;
 }
 
 .yam {
+    color: darken(@white, 10%);
     .yam {
+        background-color: transparent;
         padding: 0;
-
-        .userimg {
-            left: 32px;
-            width: 64px;
-
-            img {
-                height: 64px;
-                width: 64px;
-            }
-        }
     }
-}
-
-.userimg {
-    height: 106px;
-    left: 10px;
-    position: absolute;
-    top: 15px;
-    width: 106px;
 }
 
 .content {
     min-height: 106px;
-    padding: 15px 0;
-    padding-left: 110px;
+    padding: 30px 0;
+    padding-left: 90px;
 
     .replies {
         a {
@@ -249,14 +320,23 @@ a {
     line-height: 140%;
 }
 
-.messageinfo {
-    color: @darkSoftGrey;
+.show-attachments {
+    text-decoration: none;
+    color: @white;
+    display: block;
+    font-size: 18px;
+    margin-top: 18px;
 }
 
-.attachment {
-    max-width: 100%;
-    padding-top: 10px;
+.attachments {
+    display: none;
+
+    .attachment {
+        max-width: 100%;
+        padding-top: 10px;
+    }
 }
+
 
 .metadata,
 .likedby,
@@ -268,15 +348,12 @@ a {
     margin-top: 10px;
 }
 
-.metadata a,
-.creationdate,
 .replies a,
 .sender a {
-    color: @darkSoftGrey;
+    text-decoration: none;
 
     &:hover {
-        border-bottom-color: @slateGrey;
-        color: @slateGrey;
+        color: darken(@white, 20%);
     }
 }
 
@@ -286,13 +363,10 @@ a {
 }
 
 .likedby {
-    background-color: @darkSofterGrey;
-    color: @slateGrey;
     margin-top: 10px;
     padding: 5px;
     padding-left: 30px;
     position: relative;
-    text-shadow: 0 1px #fff;
 
     &:before {
         background-position: 0 -36px;
@@ -314,7 +388,7 @@ a {
 
 
 .document {
-    background-color: @darkSofterGrey;
+    background-color: fade(@white, 10%);
     clear: both;
     margin-top: 12px;
     max-width: @tile-width;

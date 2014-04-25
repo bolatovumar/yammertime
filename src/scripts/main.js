@@ -28,9 +28,33 @@
         elements.feed.on('tilePosts', tilePosts);
         elements.feed.on('retrieveFeed', retrieveFeed);
 
+        elements.postSwitcher.on('click', postSwitcher);
+
         $(document).on('keyup', keyPressListen);
+        elements.feed.on('click', '.show-attachments', toggleAttachments)
 
         idleEvent();
+    }
+
+    function toggleAttachments(e) {
+        e.preventDefault();
+        $(this).next('.attachments').toggle();
+    }
+
+    function postSwitcher(e) {
+        e.preventDefault();
+
+        if($(this).hasClass('top')) {
+            settings.set(settingKeys.showTop, 'true');
+            elements.feed.addClass('top');
+        } else {
+            settings.set(settingKeys.showTop, 'false');
+            elements.feed.removeClass('top');
+        }
+
+        elements.postSwitcher.removeClass('active');
+        $(this).addClass('active');
+        retrieveFeed();
     }
 
 
@@ -174,10 +198,11 @@
             logoUrl      : '',
             postRotation : 'false',
             showSticky   : 'false',
+            showTop      : 'true',
             stickyDate   : 0,
             textSize     : 'small',
-            truncate     : 'false',
-            tiled        : 'true',
+            truncate     : 'true',
+            tiled        : 'false',
             yammerLinks  : 'false'
         };
 

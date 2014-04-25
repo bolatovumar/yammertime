@@ -1,17 +1,6 @@
 {{#each this}}
     <div class="regular{{#unless replied_to_id}} yam{{/unless}}{{#if replied_to_id}} yam reply{{/if}}" id="{{id}}">
-        <div class="userimg"><img src="{{this.mugshot_url}}" height="96" width="96"/></div>
-
         <div class="content">
-            <div class="sender">
-                <a {{link_helper}}="https://www.yammer.com/users/{{username}}">
-                    {{full_name}}
-                </a>
-                {{#if replied_to_id}}
-                    <span class="in_reply_to"> in reply to {{in_reply_to}}</span>
-                {{/if}}
-            </div>
-
             <div class="message">
                 <span class="messagebody">{{{body.rich}}}
                     {{#each attachments}}
@@ -26,6 +15,10 @@
                         {{/if }}
                     {{/each}}
                 </span>
+
+                {{#if attachments}}
+                <a class="show-attachments" href="#">&raquo;View attachments</a>
+                {{/if}}
 
                 {{#if attachments}}
                     <div class="attachments">
@@ -53,23 +46,33 @@
                     </div>
                 {{/if}}
             </div>
-
-            {{#if thread_id}}
-                {{#unless replied_to_id}}
-                    {{update_count}}
-                {{/unless}}
-            {{/if}}
-
-            <div class="metadata">
-                <span class="messageinfo">Posted <a {{link_helper}}="{{web_url}}" target="_blank" class="creationdate unformatted" data-time="{{created_at}}">{{created_at}}</a> in <a {{link_helper}}="{{group_url}}">{{group_name}}</a>
-                </span>
+            <div class="sender clearfix">
+                <div class="userimg"><img src="{{this.mugshot_url}}" height="35" width="35"/></div>
+                <a {{link_helper}}="https://www.yammer.com/users/{{username}}">
+                    {{full_name}}
+                </a>
+                {{#if replied_to_id}}
+                    <span class="in_reply_to"> in reply to {{in_reply_to}}</span>
+                {{/if}}
             </div>
 
-            {{#if liked_by.count}}
-                <div class="likedby">
-                    {{like_count}} this post.
-                </div>
-            {{/if}}
+            <div class="social clearfix">
+                {{#if liked_by.count}}
+                    <div class="likedby">
+                        {{liked_by.count}} like
+                    </div>
+                {{/if}}
+                {{#if thread_id}}
+                    {{#unless replied_to_id}}
+                        {{update_count}}
+                    {{/unless}}
+                {{/if}}
+            </div>
+
+            <div class="metadata">
+                <span class="messageinfo">Posted <a {{link_helper}}="{{web_url}}" target="_blank" class="creationdate unformatted" data-time="{{created_at}}">{{created_at}}</a> {{#if group_name}}in <a {{link_helper}}="{{group_url}}">{{group_name}}{{/if}}</a>
+                </span>
+            </div>
         </div>
     </div>
 {{/each}}
